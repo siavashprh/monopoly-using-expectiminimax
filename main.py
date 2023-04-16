@@ -20,12 +20,26 @@ class Player:
     def __str__(self):
         return f"Player {self.id} ({self.token}): balance=${self.balance}, position={self.position}, properties={self.properties}"
         
+    def add_property(self, property):
+        self.properties.append(property)
+    
+    def remove_property(self, property):
+        self.properties.remove(property)
+    
     def pay(self, amount):
         self.balance -= amount
     
     def receive(self, amount):
         self.balance += amount
 
+class Property:
+    def __init__(self, name, value, owner):
+        self.name = name
+        self.value = value
+        self.owner = owner
+
+# the Board class
+# the Board class has the players and properties attributes
 class Board:
     def __init__(self, players, properties):
         self.players = players
@@ -45,12 +59,6 @@ class Dice:
         dice1 = random.randint(1, 6)
         dice2 = random.randint(1, 6)
         return dice1 + dice2
-
-class Property:
-    def __init__(self, name, value, owner):
-        self.name = name
-        self.value = value
-        self.owner = owner
 
 class Game:
     def __init__(self, players, properties):
