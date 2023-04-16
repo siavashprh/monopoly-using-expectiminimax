@@ -33,10 +33,17 @@ class Player:
         self.balance += amount
 
 class Property:
-    def __init__(self, name, value, owner):
+    def __init__(self, name, price, rent, owner):
         self.name = name
-        self.value = value
+        self.price = price
+        self.rent = rent
         self.owner = owner
+    
+    def isOwned(self):
+        return self.owner is not None
+    
+    def transferOwnership(self, new_owner):
+        self.owner = new_owner
 
 # the Board class
 # the Board class has the players and properties attributes
